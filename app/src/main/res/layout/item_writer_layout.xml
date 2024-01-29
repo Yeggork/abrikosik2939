@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textViewDeathDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Дата Смерти"
+        app:layout_constraintStart_toStartOf="@+id/textViewBirthDay"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBirthDay" />
+
+    <ImageView
+        android:id="@+id/imageViewPicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewFIO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="ФИО"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPicture"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPicture" />
+
+    <TextView
+        android:id="@+id/textViewBirthDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Рождение"
+        app:layout_constraintStart_toStartOf="@+id/textViewFIO"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFIO" />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Описание"
+        app:layout_constraintStart_toStartOf="@+id/textViewDeathDay"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDeathDay" />
+</androidx.constraintlayout.widget.ConstraintLayout>

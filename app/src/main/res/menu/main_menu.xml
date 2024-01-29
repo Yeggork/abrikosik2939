@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+         android:id="@+id/first"
+         android:title="первый"
+         android:icon="@drawable/baseline_4g_plus_mobiledata_24"/>
+
+    <item
+        android:id="@+id/second"
+        android:title="второй"
+        android:icon="@drawable/baseline_bluetooth_drive_24"/>
+    <item
+        android:id="@+id/third"
+        android:title="третий"
+        android:icon="@drawable/baseline_set_meal_24"/>
+
+</menu>

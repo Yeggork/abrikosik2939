@@ -1,0 +1,61 @@
+package com.example.abrikosik2939;
+
+import android.content.Context;
+import android.media.audiofx.AudioEffect;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
+public class WritersAdapter extends RecyclerView.Adapter<WritersAdapter.ViewHolder> {
+
+    private LayoutInflater inflater;
+    private List<Writer> writers;
+    public WritersAdapter(Context context, List<Writer> writers){
+        this.writers = writers;
+        inflater = LayoutInflater.from(context);
+    }
+    @NonNull
+    @Override
+    public WritersAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.item_writer_layout,parent,false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull WritersAdapter.ViewHolder holder, int position) {
+        Writer writer = writers.get(position);
+        holder.FIO.setText(writer.getFIO());
+        holder.birthDay.setText(writer.getBirtDay());
+        holder.deathday.setText(writer.getDeathDay());
+        holder.discription.setText(writer.getShortDescription());
+        holder.picture.setImageResource(writer.getPicture());
+    }
+
+    @Override
+    public int getItemCount() {
+        return writers.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView FIO, birthDay, deathday, discription;
+        ImageView picture;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            FIO = itemView.findViewById(R.id.textViewFIO);
+            birthDay = itemView.findViewById(R.id.textViewBirthDay);
+            deathday = itemView.findViewById(R.id.textViewDeathDay);
+            discription = itemView.findViewById(R.id.textViewDescription);
+            picture = itemView.findViewById(R.id.imageViewPicture);
+
+
+        }
+    }
+}
