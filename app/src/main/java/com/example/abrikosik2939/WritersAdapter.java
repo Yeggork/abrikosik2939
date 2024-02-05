@@ -1,5 +1,6 @@
 package com.example.abrikosik2939;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.audiofx.AudioEffect;
 import android.view.LayoutInflater;
@@ -18,9 +19,15 @@ public class WritersAdapter extends RecyclerView.Adapter<WritersAdapter.ViewHold
 
     private LayoutInflater inflater;
     private List<Writer> writers;
-    public WritersAdapter(Context context, List<Writer> writers){
+    private OnWriterClickListener onWriterClickListener;
+    interface OnWriterClickListener{
+        void OnWriterClick(Writer writer, int position);
+
+    }
+    public WritersAdapter(Context context, List<Writer> writers,OnWriterClickListener onWriterClickLestener){
         this.writers = writers;
         inflater = LayoutInflater.from(context);
+        this.onWriterClickListener = onWriterClickLestener;
     }
     @NonNull
     @Override
@@ -30,13 +37,19 @@ public class WritersAdapter extends RecyclerView.Adapter<WritersAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WritersAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WritersAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Writer writer = writers.get(position);
         holder.FIO.setText(writer.getFIO());
         holder.birthDay.setText(writer.getBirtDay());
         holder.deathday.setText(writer.getDeathDay());
         holder.discription.setText(writer.getShortDescription());
         holder.picture.setImageResource(writer.getPicture());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onWriterClickListener.OnWriterClick(writer, position);
+            }
+        });
     }
 
     @Override
@@ -54,8 +67,6 @@ public class WritersAdapter extends RecyclerView.Adapter<WritersAdapter.ViewHold
             deathday = itemView.findViewById(R.id.textViewDeathDay);
             discription = itemView.findViewById(R.id.textViewDescription);
             picture = itemView.findViewById(R.id.imageViewPicture);
-
-
         }
     }
 }
